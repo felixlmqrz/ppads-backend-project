@@ -70,5 +70,5 @@ mvn spring-boot:run
 
 - <a href="https://github.com/felixlmqrz">Felix Lima Queiroz</a>
 - <a href="https://github.com/jessicaamorim19">Jessica Campos Fanti Amorim</a>
-- <a href="https://github.com/">Julia Ramires Cerejo</a>
+- <a href="https://github.com/juliacerejo">Julia Ramires Cerejo</a>
 - <a href="https://github.com/acceberc">Rebecca da Cunha Cruz</a>
