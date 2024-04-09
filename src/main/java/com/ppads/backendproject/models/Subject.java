@@ -26,6 +26,9 @@ public class Subject implements Serializable {
     @OneToMany(mappedBy = "subject")
     private List<Class> classes = new ArrayList<>();
 
+    @OneToOne(mappedBy = "subject", cascade = CascadeType.ALL)
+    private Teacher teacher;
+
     public Subject() {
     }
 
@@ -61,6 +64,14 @@ public class Subject implements Serializable {
 
     public List<Class> getClasses() {
         return classes;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     @Override
