@@ -1,8 +1,11 @@
 package com.ppads.backendproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,6 +17,10 @@ public class Classroom implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String classroomName;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "classroom")
+    private List<Subject> subjects = new ArrayList<>();
 
     public Classroom() {
     }
@@ -37,6 +44,10 @@ public class Classroom implements Serializable {
 
     public void setClassroomName(String classroomName) {
         this.classroomName = classroomName;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
     }
 
     @Override
