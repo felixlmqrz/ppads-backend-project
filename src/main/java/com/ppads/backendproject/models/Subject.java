@@ -1,8 +1,11 @@
 package com.ppads.backendproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +21,10 @@ public class Subject implements Serializable {
     @ManyToOne
     @JoinColumn(name = "classroom_id")
     private Classroom classroom;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "subject")
+    private List<Class> classes = new ArrayList<>();
 
     public Subject() {
     }
@@ -50,6 +57,10 @@ public class Subject implements Serializable {
 
     public void setClassroom(Classroom classroom) {
         this.classroom = classroom;
+    }
+
+    public List<Class> getClasses() {
+        return classes;
     }
 
     @Override

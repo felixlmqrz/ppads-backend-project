@@ -377,7 +377,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/subjects?Authorization=Basic cmViZWNjYUBlbWFpbC5jb206cGFzc3dvcmQxMjM=",
+							"raw": "http://localhost:8080/subjects",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -385,12 +385,6 @@
 							"port": "8080",
 							"path": [
 								"subjects"
-							],
-							"query": [
-								{
-									"key": "Authorization",
-									"value": "Basic cmViZWNjYUBlbWFpbC5jb206cGFzc3dvcmQxMjM="
-								}
 							]
 						}
 					},
@@ -420,7 +414,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/subjects/1?Authorization",
+							"raw": "http://localhost:8080/subjects/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -429,12 +423,6 @@
 							"path": [
 								"subjects",
 								"1"
-							],
-							"query": [
-								{
-									"key": "Authorization",
-									"value": null
-								}
 							]
 						}
 					},
@@ -460,6 +448,160 @@
 							"port": "8080",
 							"path": [
 								"subjects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Classes",
+			"item": [
+				{
+					"name": "Get all classes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/classes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one class",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/classes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"classes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new class",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": null,\n    \"classDate\": \"2024-04-09\",\n    \"subject\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/classes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"classes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update class",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": null,\n    \"classDate\": \"2024-04-09\",\n    \"subject\": {\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/classes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"classes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove class",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/classes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"classes",
 								"1"
 							]
 						}
