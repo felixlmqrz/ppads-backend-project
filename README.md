@@ -63,7 +63,7 @@ mvn spring-boot:run
 ![image](https://github.com/felixlmqrz/ppads-backend-project/assets/91034724/20168709-dec2-48fa-b59a-0cc5ba8e8530)
 
 ## 🚩 Postman collection
-* Exemplos de Uso [`src/main/resources/collection/PPADS.postman_collection`](src/main/resources/collection/PPADS.postman_collection.json)
+* Exemplos de Uso [`src/main/resources/collection/ppads-backend-project.postman_collection`](src/main/resources/collection/ppads-backend-project.postman_collection.json)
 
 
 ## 👥 Membros do grupo

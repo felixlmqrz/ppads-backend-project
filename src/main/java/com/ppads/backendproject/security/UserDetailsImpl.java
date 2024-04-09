@@ -1,6 +1,6 @@
 package com.ppads.backendproject.security;
 
-import com.ppads.backendproject.model.User;
+import com.ppads.backendproject.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

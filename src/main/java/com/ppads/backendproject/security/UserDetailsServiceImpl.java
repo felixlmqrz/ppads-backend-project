@@ -1,7 +1,7 @@
 package com.ppads.backendproject.security;
 
-import com.ppads.backendproject.model.User;
-import com.ppads.backendproject.repository.UserRepository;
+import com.ppads.backendproject.models.User;
+import com.ppads.backendproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
