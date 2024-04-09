@@ -4,28 +4,33 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table(name = "tb_class")
-public class Class implements Serializable {
+@Table(name = "tb_lesson")
+public class Lesson implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate classDate;
+    private LocalDate lessonDate;
 
     @ManyToOne
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
-    public Class() {
+    @OneToMany(mappedBy = "id.lesson")
+    private Set<Attendance> attendances = new HashSet<>();
+
+    public Lesson() {
     }
 
-    public Class(Long id, LocalDate classDate, Subject subject) {
+    public Lesson(Long id, LocalDate lessonDate, Subject subject) {
         this.id = id;
-        this.classDate = classDate;
+        this.lessonDate = lessonDate;
         this.subject = subject;
     }
 
@@ -37,12 +42,12 @@ public class Class implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getClassDate() {
-        return classDate;
+    public LocalDate getLessonDate() {
+        return lessonDate;
     }
 
-    public void setClassDate(LocalDate classDate) {
-        this.classDate = classDate;
+    public void setLessonDate(LocalDate lessonDate) {
+        this.lessonDate = lessonDate;
     }
 
     public Subject getSubject() {
@@ -53,12 +58,16 @@ public class Class implements Serializable {
         this.subject = subject;
     }
 
+    public Set<Attendance> getAttendances() {
+        return attendances;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Class aClass = (Class) o;
-        return Objects.equals(id, aClass.id);
+        Lesson lesson = (Lesson) o;
+        return Objects.equals(id, lesson.id);
     }
 
     @Override

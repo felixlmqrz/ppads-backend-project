@@ -1,4 +1,4 @@
-package com.ppads.backendproject.enums;
+package com.ppads.backendproject.models.enums;
 
 public enum UserRole {
     STUDENT,

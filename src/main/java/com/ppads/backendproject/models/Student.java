@@ -1,9 +1,12 @@
 package com.ppads.backendproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "/students")
@@ -14,6 +17,9 @@ public class Student implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String studentName;
+
+    @OneToMany(mappedBy = "id.student")
+    private Set<Attendance> attendances = new HashSet<>();
 
     public Student() {
     }
@@ -37,6 +43,15 @@ public class Student implements Serializable {
 
     public void setStudentName(String studentName) {
         this.studentName = studentName;
+    }
+
+    @JsonIgnore
+    public Set<Lesson> getAttendances() {
+        Set<Lesson> set  = new HashSet<>();
+        for (Attendance x : attendances) {
+            set.add(x.getLesson());
+        }
+        return set;
     }
 
     @Override

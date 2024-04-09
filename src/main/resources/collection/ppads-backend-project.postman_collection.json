@@ -457,10 +457,10 @@
 			]
 		},
 		{
-			"name": "Classes",
+			"name": "Lessons",
 			"item": [
 				{
-					"name": "Get all classes",
+					"name": "Get all lessons",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -471,21 +471,21 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/classes",
+							"raw": "http://localhost:8080/lessons",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"classes"
+								"lessons"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get one class",
+					"name": "Get one lessons",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -496,14 +496,14 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/classes/1",
+							"raw": "http://localhost:8080/lessons/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"classes",
+								"lessons",
 								"1"
 							]
 						}
@@ -511,7 +511,7 @@
 					"response": []
 				},
 				{
-					"name": "Add new class",
+					"name": "Add new lesson",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -523,7 +523,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": null,\n    \"classDate\": \"2024-04-09\",\n    \"subject\": {\n        \"id\": 1\n    }\n}",
+							"raw": "{\n    \"id\": null,\n    \"lessonDate\": \"2024-04-09\",\n    \"subject\": {\n        \"id\": 1\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -531,21 +531,21 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/classes",
+							"raw": "http://localhost:8080/lessons",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"classes"
+								"lessons"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Update class",
+					"name": "Update lesson",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -560,7 +560,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": null,\n    \"classDate\": \"2024-04-09\",\n    \"subject\": {\n        \"id\": 1\n    }\n}",
+							"raw": "{\n    \"id\": null,\n    \"lessonDate\": \"2024-04-09\",\n    \"subject\": {\n        \"id\": 1\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -568,14 +568,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/classes/1",
+							"raw": "http://localhost:8080/lessons/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"classes",
+								"lessons",
 								"1"
 							]
 						}
@@ -583,7 +583,7 @@
 					"response": []
 				},
 				{
-					"name": "Remove class",
+					"name": "Remove lesson",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -594,14 +594,14 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/classes/1",
+							"raw": "http://localhost:8080/lessons/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"classes",
+								"lessons",
 								"1"
 							]
 						}
@@ -756,6 +756,163 @@
 							"port": "8080",
 							"path": [
 								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attendance",
+			"item": [
+				{
+					"name": "Get all attendances",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/attendances",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"attendances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one attendance",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/attendances/1/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"attendances",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new attendance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": {\n        \"lesson\": {\n            \"id\": 1\n        },\n        \"student\": {\n            \"id\": 1\n        }\n    },\n    \"presence\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/attendances",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"attendances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update attendance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": {\n        \"lesson\": {\n            \"id\": 1\n        },\n        \"student\": {\n            \"id\": 1\n        }\n    },\n    \"presence\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/attendances/1/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"attendances",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove attendace",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/attendances/1/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"attendances",
+								"1",
 								"1"
 							]
 						}
