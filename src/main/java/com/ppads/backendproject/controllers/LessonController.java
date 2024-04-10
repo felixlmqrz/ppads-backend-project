@@ -1,5 +1,6 @@
 package com.ppads.backendproject.controllers;
 
+import com.ppads.backendproject.dto.AttendanceDTO;
 import com.ppads.backendproject.models.Lesson;
 import com.ppads.backendproject.services.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,11 @@ public class LessonController {
     public ResponseEntity<Lesson> update(@PathVariable Long id, @RequestBody Lesson obj) {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @PostMapping(value = "/{id}/takeAttendance")
+    public ResponseEntity<Lesson> takeAttendance(@PathVariable Long id, @RequestBody List<AttendanceDTO> listDto) {
+        service.takeAttendance(id, listDto);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -1,15 +1,18 @@
 package com.ppads.backendproject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_teacher")
 public class Teacher implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String teacherName;
 

@@ -24,7 +24,7 @@ public class Subject implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "subject")
-    private List<Class> classes = new ArrayList<>();
+    private List<Lesson> lessons = new ArrayList<>();
 
     @OneToOne(mappedBy = "subject", cascade = CascadeType.ALL)
     private Teacher teacher;
@@ -62,8 +62,8 @@ public class Subject implements Serializable {
         this.classroom = classroom;
     }
 
-    public List<Class> getClasses() {
-        return classes;
+    public List<Lesson> getLessons() {
+        return lessons;
     }
 
     public Teacher getTeacher() {
