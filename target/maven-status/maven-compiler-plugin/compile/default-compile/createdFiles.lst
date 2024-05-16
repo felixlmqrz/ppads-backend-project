@@ -1,9 +1,0 @@
-com/ppads/backendproject/repositories/ClassroomRepository.class
-com/ppads/backendproject/models/UserLogin.class
-com/ppads/backendproject/models/User.class
-com/ppads/backendproject/controllers/UserController.class
-com/ppads/backendproject/services/ClassroomService.class
-com/ppads/backendproject/services/UserService.class
-com/ppads/backendproject/models/Classroom.class
-com/ppads/backendproject/repositories/UserRepository.class
-com/ppads/backendproject/controllers/ClassroomController.class
