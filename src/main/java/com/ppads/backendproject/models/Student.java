@@ -18,15 +18,20 @@ public class Student implements Serializable {
     private Long id;
     private String studentName;
 
+    @ManyToOne
+    @JoinColumn(name = "classroom_id")
+    private Classroom classroom;
+
     @OneToMany(mappedBy = "id.student")
     private Set<Attendance> attendances = new HashSet<>();
 
     public Student() {
     }
 
-    public Student(Long id, String studentName) {
+    public Student(Long id, String studentName, Classroom classroom) {
         this.id = id;
         this.studentName = studentName;
+        this.classroom = classroom;
     }
 
     public Long getId() {
@@ -43,6 +48,14 @@ public class Student implements Serializable {
 
     public void setStudentName(String studentName) {
         this.studentName = studentName;
+    }
+
+    public Classroom getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
     }
 
     @JsonIgnore

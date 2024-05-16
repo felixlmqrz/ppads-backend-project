@@ -10,6 +10,7 @@ import com.ppads.backendproject.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,11 @@ public class LessonService {
 
     public Lesson findById(Long id) {
         Optional<Lesson> obj = lessonRepository.findById(id);
+        return obj.get();
+    }
+
+    public Lesson findByLessonDate(LocalDate date) {
+        Optional<Lesson> obj = lessonRepository.findByLessonDate(date);
         return obj.get();
     }
 

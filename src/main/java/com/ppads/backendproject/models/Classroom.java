@@ -22,6 +22,10 @@ public class Classroom implements Serializable {
     @OneToMany(mappedBy = "classroom")
     private List<Subject> subjects = new ArrayList<>();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "classroom")
+    private List<Student> students = new ArrayList<>();
+
     public Classroom() {
     }
 
@@ -48,6 +52,10 @@ public class Classroom implements Serializable {
 
     public List<Subject> getSubjects() {
         return subjects;
+    }
+
+    public List<Student> getStudents() {
+        return students;
     }
 
     @Override

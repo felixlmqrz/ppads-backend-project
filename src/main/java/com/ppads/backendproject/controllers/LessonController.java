@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -27,6 +28,12 @@ public class LessonController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Lesson> findById(@PathVariable Long id) {
         Lesson obj = service.findById(id);
+        return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping(value = "/date/{date}")
+    public ResponseEntity<Lesson> findByLessonDate(@PathVariable LocalDate date) {
+        Lesson obj = service.findByLessonDate(date);
         return ResponseEntity.ok().body(obj);
     }
 

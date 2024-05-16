@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fd0722c3-839c-4b71-a79c-b7f64739ec8d",
+		"_postman_id": "fadd47be-943f-4acd-bd92-1e978458fe78",
 		"name": "ppads-backend-project",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28019470"
@@ -16,8 +16,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -41,8 +40,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -94,8 +92,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -128,8 +125,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -158,8 +154,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -183,8 +178,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -209,8 +203,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -243,8 +236,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -278,8 +270,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -309,8 +300,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -334,8 +324,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -360,8 +349,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -394,8 +382,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -429,8 +416,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -460,8 +446,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -479,14 +464,13 @@
 					"response": []
 				},
 				{
-					"name": "Get one lessons",
+					"name": "Get one lesson by id",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -505,14 +489,34 @@
 					"response": []
 				},
 				{
+					"name": "Get one lesson by date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/lessons/date/2024-04-09",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lessons",
+								"date",
+								"2024-04-09"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Add new lesson",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -545,8 +549,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -580,8 +583,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -606,8 +608,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -647,8 +648,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -672,8 +672,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -698,8 +697,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -732,8 +730,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -767,8 +764,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -798,8 +794,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -823,8 +818,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
@@ -849,8 +843,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -883,8 +876,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"body": {
@@ -918,8 +910,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"value": ""
 							}
 						],
 						"url": {
