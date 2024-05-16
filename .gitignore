@@ -4,9 +4,5 @@
 # Maven/Gradle build directories
 target/
 
-# Logs
-*.log
-logs/
-
 # macOS specific
 .DS_Store
