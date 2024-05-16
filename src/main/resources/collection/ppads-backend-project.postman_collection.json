@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fadd47be-943f-4acd-bd92-1e978458fe78",
+		"_postman_id": "c3b9d1b3-e7ad-4f7a-9b08-cd981d187a51",
 		"name": "ppads-backend-project",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28019470"
@@ -702,7 +702,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": null,\n    \"studentName\": \"João Silva\"\n}",
+							"raw": "{\n    \"id\": null,\n    \"studentName\": \"João Silva\",\n    \"classroom\": {\n        \"id\": 1\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -735,7 +735,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": null,\n    \"studentName\": \"João Silva\"\n}",
+							"raw": "{\n    \"id\": null,\n    \"studentName\": \"João Silva\",\n    \"classroom\": {\n        \"id\": 1\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"

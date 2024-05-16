@@ -9,5 +9,5 @@ import java.util.Optional;
 
 public interface LessonRepository extends JpaRepository<Lesson, Long> {
 
-    Optional<Lesson> findByLessonDate(LocalDate date);
+    List<Lesson> findByLessonDate(LocalDate date);
 }

@@ -32,9 +32,9 @@ public class LessonController {
     }
 
     @GetMapping(value = "/date/{date}")
-    public ResponseEntity<Lesson> findByLessonDate(@PathVariable LocalDate date) {
-        Lesson obj = service.findByLessonDate(date);
-        return ResponseEntity.ok().body(obj);
+    public ResponseEntity<List<Lesson>> findByLessonDate(@PathVariable LocalDate date) {
+        List<Lesson> list = service.findByLessonDate(date);
+        return ResponseEntity.ok().body(list);
     }
 
     @PostMapping

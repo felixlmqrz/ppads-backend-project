@@ -35,9 +35,8 @@ public class LessonService {
         return obj.get();
     }
 
-    public Lesson findByLessonDate(LocalDate date) {
-        Optional<Lesson> obj = lessonRepository.findByLessonDate(date);
-        return obj.get();
+    public List<Lesson> findByLessonDate(LocalDate date) {
+        return lessonRepository.findByLessonDate(date);
     }
 
     public Lesson insert(Lesson obj) {
@@ -59,11 +58,11 @@ public class LessonService {
 
         for (AttendanceDTO attendanceDto : attendanceDtoList) {
             Long studentId = attendanceDto.studentId();
-            Boolean precense = attendanceDto.presence();
+            Boolean presence = attendanceDto.presence();
 
             Student student = studentRepository.getReferenceById(studentId);
 
-            Attendance attendance = new Attendance(lesson, student, precense);
+            Attendance attendance = new Attendance(lesson, student, presence);
             attendanceRepository.save(attendance);
         }
     }
