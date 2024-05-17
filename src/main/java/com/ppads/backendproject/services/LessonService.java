@@ -1,12 +1,8 @@
 package com.ppads.backendproject.services;
 
 import com.ppads.backendproject.dto.AttendanceDTO;
-import com.ppads.backendproject.models.Attendance;
-import com.ppads.backendproject.models.Lesson;
-import com.ppads.backendproject.models.Student;
-import com.ppads.backendproject.repositories.AttendanceRepository;
-import com.ppads.backendproject.repositories.LessonRepository;
-import com.ppads.backendproject.repositories.StudentRepository;
+import com.ppads.backendproject.models.*;
+import com.ppads.backendproject.repositories.*;
 import com.ppads.backendproject.services.exceptions.DatabaseException;
 import com.ppads.backendproject.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
@@ -31,6 +27,9 @@ public class LessonService {
     @Autowired
     private AttendanceRepository attendanceRepository;
 
+    @Autowired
+    private SubjectRepository subjectRepository;
+
     public List<Lesson> findAll() {
         return lessonRepository.findAll();
     }
@@ -45,6 +44,22 @@ public class LessonService {
     }
 
     public Lesson insert(Lesson obj) {
+        Long subjectId = obj.getSubject().getId();
+        Subject subject = subjectRepository.findById(subjectId)
+                .orElseThrow(() -> new ResourceNotFoundException(subjectId));
+
+        Classroom classroom = subject.getClassroom();
+
+        obj.setSubject(subject);
+
+        obj = lessonRepository.save(obj);
+
+        for (Student student : classroom.getStudents()) {
+            Attendance attendance = new Attendance(obj, student, false);
+            attendanceRepository.save(attendance);
+            obj.getAttendances().add(attendance);
+        }
+
         return lessonRepository.save(obj);
     }
 
