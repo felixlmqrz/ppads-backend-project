@@ -2,7 +2,12 @@ package com.ppads.backendproject.services;
 
 import com.ppads.backendproject.models.Classroom;
 import com.ppads.backendproject.repositories.ClassroomRepository;
+import com.ppads.backendproject.services.exceptions.DatabaseException;
+import com.ppads.backendproject.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +25,7 @@ public class ClassroomService {
 
     public Classroom findById(Long id) {
         Optional<Classroom> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public Classroom insert(Classroom obj) {
@@ -28,13 +33,23 @@ public class ClassroomService {
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public Classroom update(Long id, Classroom obj) {
-        Classroom entity = repository.getReferenceById(id);
-        updateData(entity, obj);
-        return repository.save(entity);
+        try {
+            Classroom entity = repository.getReferenceById(id);
+            updateData(entity, obj);
+            return repository.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     private void updateData(Classroom entity, Classroom obj) {

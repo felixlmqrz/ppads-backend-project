@@ -2,7 +2,12 @@ package com.ppads.backendproject.services;
 
 import com.ppads.backendproject.models.Student;
 import com.ppads.backendproject.repositories.StudentRepository;
+import com.ppads.backendproject.services.exceptions.DatabaseException;
+import com.ppads.backendproject.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +25,7 @@ public class StudentService {
 
     public Student findById(Long id) {
         Optional<Student> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public Student insert(Student obj) {
@@ -28,15 +33,24 @@ public class StudentService {
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public Student update(Long id, Student obj) {
-        Student entity = repository.getReferenceById(id);
-        updateData(entity, obj);
-        return repository.save(entity);
+        try {
+            Student entity = repository.getReferenceById(id);
+            updateData(entity, obj);
+            return repository.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
-
     private void updateData(Student entity, Student obj) {
         entity.setStudentName(obj.getStudentName());
     }
