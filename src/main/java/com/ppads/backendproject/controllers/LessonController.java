@@ -1,6 +1,7 @@
 package com.ppads.backendproject.controllers;
 
 import com.ppads.backendproject.dto.AttendanceDTO;
+import com.ppads.backendproject.dto.LessonDTO;
 import com.ppads.backendproject.models.Lesson;
 import com.ppads.backendproject.services.LessonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,8 @@ public class LessonController {
     }
 
     @PostMapping
-    public ResponseEntity<Lesson> insert(@RequestBody Lesson obj) {
-        obj = service.insert(obj);
+    public ResponseEntity<Lesson> insert(@RequestBody LessonDTO objDto) {
+        Lesson obj = service.insert(objDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
