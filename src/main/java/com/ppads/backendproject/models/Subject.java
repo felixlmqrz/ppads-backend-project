@@ -26,6 +26,7 @@ public class Subject implements Serializable {
     @OneToMany(mappedBy = "subject")
     private List<Lesson> lessons = new ArrayList<>();
 
+    @JsonIgnore
     @OneToOne(mappedBy = "subject", cascade = CascadeType.ALL)
     private Teacher teacher;
 

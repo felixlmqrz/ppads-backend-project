@@ -16,7 +16,6 @@ public class Teacher implements Serializable {
     private Long id;
     private String teacherName;
 
-    @JsonIgnore
     @OneToOne
     @MapsId
     private Subject subject;

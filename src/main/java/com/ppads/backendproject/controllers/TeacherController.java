@@ -1,5 +1,6 @@
 package com.ppads.backendproject.controllers;
 
+import com.ppads.backendproject.dto.TeacherDTO;
 import com.ppads.backendproject.models.Teacher;
 import com.ppads.backendproject.services.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,8 @@ public class TeacherController {
     }
 
     @PostMapping
-    public ResponseEntity<Teacher> insert(@RequestBody Teacher obj) {
-        obj = service.insert(obj);
+    public ResponseEntity<Teacher> insert(@RequestBody TeacherDTO objDto) {
+        Teacher obj = service.insert(objDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
@@ -44,8 +45,8 @@ public class TeacherController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Teacher> update(@PathVariable Long id, @RequestBody Teacher obj) {
-        obj = service.update(id, obj);
+    public ResponseEntity<Teacher> update(@PathVariable Long id, @RequestBody TeacherDTO objDto) {
+        Teacher obj = service.update(id, objDto);
         return ResponseEntity.ok().body(obj);
     }
 }
