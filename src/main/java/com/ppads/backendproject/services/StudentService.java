@@ -1,6 +1,9 @@
 package com.ppads.backendproject.services;
 
+import com.ppads.backendproject.dto.StudentDTO;
+import com.ppads.backendproject.models.Classroom;
 import com.ppads.backendproject.models.Student;
+import com.ppads.backendproject.repositories.ClassroomRepository;
 import com.ppads.backendproject.repositories.StudentRepository;
 import com.ppads.backendproject.services.exceptions.DatabaseException;
 import com.ppads.backendproject.services.exceptions.ResourceNotFoundException;
@@ -17,24 +20,32 @@ import java.util.Optional;
 public class StudentService {
 
     @Autowired
-    private StudentRepository repository;
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private ClassroomRepository classroomRepository;
 
     public List<Student> findAll() {
-        return repository.findAll();
+        return studentRepository.findAll();
     }
 
     public Student findById(Long id) {
-        Optional<Student> obj = repository.findById(id);
+        Optional<Student> obj = studentRepository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public Student insert(Student obj) {
-        return repository.save(obj);
+    public Student insert(StudentDTO objDto) {
+        Long classroomId = objDto.classroomId();
+        Classroom classroom = classroomRepository.findById(classroomId)
+                .orElseThrow(() -> new ResourceNotFoundException(classroomId));
+
+        Student obj = new Student(objDto.id(), objDto.studentName(), classroom);
+        return studentRepository.save(obj);
     }
 
     public void delete(Long id) {
         try {
-            repository.deleteById(id);
+            studentRepository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException(id);
         } catch (DataIntegrityViolationException e) {
@@ -42,16 +53,16 @@ public class StudentService {
         }
     }
 
-    public Student update(Long id, Student obj) {
+    public Student update(Long id, StudentDTO objDto) {
         try {
-            Student entity = repository.getReferenceById(id);
-            updateData(entity, obj);
-            return repository.save(entity);
+            Student entity = studentRepository.getReferenceById(id);
+            updateData(entity, objDto);
+            return studentRepository.save(entity);
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException(id);
         }
     }
-    private void updateData(Student entity, Student obj) {
-        entity.setStudentName(obj.getStudentName());
+    private void updateData(Student entity, StudentDTO objDto) {
+        entity.setStudentName(objDto.studentName());
     }
 }

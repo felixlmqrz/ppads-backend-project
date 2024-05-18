@@ -1,5 +1,6 @@
 package com.ppads.backendproject.controllers;
 
+import com.ppads.backendproject.dto.StudentDTO;
 import com.ppads.backendproject.models.Student;
 import com.ppads.backendproject.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,8 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<Student> insert(@RequestBody Student obj) {
-        obj = service.insert(obj);
+    public ResponseEntity<Student> insert(@RequestBody StudentDTO objDto) {
+        Student obj = service.insert(objDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
@@ -44,8 +45,8 @@ public class StudentController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Student> update(@PathVariable Long id, @RequestBody Student obj) {
-        obj = service.update(id, obj);
+    public ResponseEntity<Student> update(@PathVariable Long id, @RequestBody StudentDTO objDto) {
+        Student obj = service.update(id, objDto);
         return ResponseEntity.ok().body(obj);
     }
 }
